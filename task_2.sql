@@ -4,28 +4,25 @@ USE alx_book_store;
 -- Create table for authors
 CREATE TABLE IF NOT EXISTS Authors (
     author_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL
+    author_name VARCHAR(215) NOT NULL
 );
 
 -- Create table for books
 CREATE TABLE IF NOT EXISTS books (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(100) NOT NULL,
+    title VARCHAR(130) NOT NULL,
     author_id INT,
-    price DECIMAL(10, 2) NOT NULL,
-    stock_quantity INT NOT NULL,
-    FOREIGN KEY (author_id) REFERENCES Authors(author_id) ON DELETE SET NULL
+    price DOUBLE NOT NULL,
+    publication_date DATE,
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id) ON DELETE CASCADE
 );
 
 -- Create table for customers
-CREATE TABLE IF NOT EXISTS customers (
+CREATE TABLE If NOT EXISTS Customers (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    phone_number VARCHAR(15),
-    address VARCHAR(255)
+    customer_name VARCHAR(215) NOT NULL,
+    email VARCHAR(215) NOT NULL UNIQUE,
+    address TEXT NOT NULL
 );
 
 -- Create table for orders
@@ -33,9 +30,9 @@ CREATE TABLE IF NOT EXISTS orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
     order_date DATE NOT NULL,
-    total_amount DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) ON DELETE CASCADE
 );
+
 
 -- Create table for order details
 CREATE TABLE IF NOT EXISTS order_details (

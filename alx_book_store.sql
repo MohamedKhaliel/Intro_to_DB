@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS Orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
     order_date DATE NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) ON DELETE CASCADE
 );
 
 -- Create the Order_Details table
@@ -40,6 +40,6 @@ CREATE TABLE IF NOT EXISTS Order_details (
     order_id INT,
     book_id INT,
     quantity DOUBLE NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
-    FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
+    FOREIGN KEY (book_id) REFERENCES Books(book_id) ON DELETE CASCADE
 );

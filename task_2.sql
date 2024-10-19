@@ -2,7 +2,7 @@
 USE alx_book_store;
 
 -- Create table for authors
-CREATE TABLE IF NOT EXISTS authors (
+CREATE TABLE IF NOT EXISTS Authors (
     author_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS books (
     author_id INT,
     price DECIMAL(10, 2) NOT NULL,
     stock_quantity INT NOT NULL,
-    FOREIGN KEY (author_id) REFERENCES authors(author_id) ON DELETE SET NULL
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id) ON DELETE SET NULL
 );
 
 -- Create table for customers
